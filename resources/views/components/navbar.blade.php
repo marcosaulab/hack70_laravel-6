@@ -8,15 +8,15 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0 text-center">
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="{{ route('home') }}"><i class="fa-solid fa-house"></i></a>
+                    <a class="nav-link @if(Route::currentRouteName() == 'home') active @endif" aria-current="page" href="{{ route('home') }}"><i class="fa-solid fa-house"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="{{ route('comic.create') }}">
+                    <a class="nav-link @if(Route::currentRouteName() == 'comic.create') active @endif" aria-current="page" href="{{ route('comic.create') }}">
                         Crea Comic
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="{{ route('comic.index') }}">
+                    <a class="nav-link @if(Route::currentRouteName() == 'comic.index') active @endif" aria-current="page" href="{{ route('comic.index') }}">
                         Lista Comic
                     </a>
                 </li>
