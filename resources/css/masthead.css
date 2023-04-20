@@ -1,0 +1,9 @@
+.masthead {
+  height: 40vh;
+  min-height: 300px;
+  /* background-image: url('./../img/masthead.jpg'); */
+  background: linear-gradient(to left, transparent, rgba(9, 30, 99, 0.821)), url('./../img/masthead.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

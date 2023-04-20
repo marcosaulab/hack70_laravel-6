@@ -1,0 +1,20 @@
+body {
+    font-family: 'Inika', serif;
+}
+
+.btn-theme {
+    --bs-btn-color: #0b0b0b;
+    --bs-btn-bg: #ffea03;
+    --bs-btn-border-color: #fde50d;
+    --bs-btn-hover-color: #0b0b0b;
+    --bs-btn-hover-bg: #d4d70b;
+    --bs-btn-hover-border-color: #cabd0a;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #0b0b0b;
+    --bs-btn-active-bg: #cabd0a;
+    --bs-btn-active-border-color: #beb20a;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #0b0b0b;
+    --bs-btn-disabled-bg: #ffea03;
+    --bs-btn-disabled-border-color: #ffea03;
+}
