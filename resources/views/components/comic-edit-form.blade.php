@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3 col-12 col-md-6">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" name="price" min="0" max="100" step="1" value="{{ $comic->price }}">
+            <input type="number" class="form-control" name="price" min="0" max="100" step="0.1" value="{{ $comic->price }}">
         </div>
         <div class="mb-3 col-12 col-md-6">
             <label for="abstract" class="form-label">Abstract</label>
