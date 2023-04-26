@@ -10,6 +10,7 @@ class Comic extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
         'img',
         'genre',
@@ -18,4 +19,11 @@ class Comic extends Model
         'release_year',
         'price'
     ];
+
+    // ! un comic quanti utenti può avere? 1
+    public function user() {
+        // ! una riga sulla tabella comics ha un solo user_id
+        return $this->belongsTo(User::class);
+    }
+
 }

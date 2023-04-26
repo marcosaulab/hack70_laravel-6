@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comics', function (Blueprint $table) {
-            $table->id(); // ! crae un id auto_increment e chiave primaria
+            $table->id(); // ! crea un id auto_increment e chiave primaria
             $table->string('title');
             $table->string('img');
             $table->string('genre');

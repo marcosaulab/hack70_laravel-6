@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ComicController extends Controller
@@ -22,7 +23,8 @@ class ComicController extends Controller
         }
 
         $comics = Comic::create(
-            [
+            [   
+                'user_id' => Auth::user()->id,
                 'title' => $request->input('title'),
                 'img' => $img,
                 'genre' => $request->input('genre'),

@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // ! quanti comics può avere un utente? Risposta N
+    // ! un utente quanti comics può avere? Risposta N
+    public function comics() { // ! funzione di relazione
+        // ! quanti comics può avere un utente? N
+        return $this->hasMany(Comic::class);
+    }
+
 }

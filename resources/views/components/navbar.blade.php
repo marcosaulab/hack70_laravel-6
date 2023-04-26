@@ -10,11 +10,13 @@
                 <li class="nav-item">
                     <a class="nav-link @if(Route::currentRouteName() == 'home') active @endif" aria-current="page" href="{{ route('home') }}"><i class="fa-solid fa-house"></i></a>
                 </li>
+                @if(Auth::user() != null)
                 <li class="nav-item">
                     <a class="nav-link @if(Route::currentRouteName() == 'comic.create') active @endif" aria-current="page" href="{{ route('comic.create') }}">
                         Crea Comic
                     </a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link @if(Route::currentRouteName() == 'comic.index') active @endif" aria-current="page" href="{{ route('comic.index') }}">
                         Lista Comic
@@ -36,9 +38,31 @@
                 </li>
             </ul>
         </div>
-        <form class="d-flex" role="search" method="GET" action="">
-                        <input class="form-control me-2" name="searchKey" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success btn-theme" type="submit">Search</button>
-                    </form>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            @if(Auth::user() != null)
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link text-white">{{ Auth::user()->name }}</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('profile') }}" class="nav-link text-white">I miei comics</a>
+                    </li>
+                    <li class="nav-item">
+                       <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-info">Logout</button>
+                       </form>
+                    </li>
+            @else
+                    <li class="nav-item">
+                            <a class="nav-link @if(Route::currentRouteName() == 'register') active @endif" aria-current="page"
+                                href="{{ route('register') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if(Route::currentRouteName() == 'register') active @endif" aria-current="page"
+                                href="{{ route('login') }}">Login</a>
+                    </li>
+            @endif
+        </ul>
+
     </div>
 </nav>

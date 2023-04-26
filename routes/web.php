@@ -30,3 +30,6 @@ Route::get('/comic/edit/{comic}', [ComicController::class, 'edit'])->name('comic
 Route::put('/comic/update/{comic}', [ComicController::class, 'update'])->name('comic.update');
 
 Route::delete('/comic/delete/{comic}', [ComicController::class, 'delete'])->name('comic.delete');
+
+
+Route::get('/profile', [PublicController::class, 'profile'])->name('profile');
