@@ -10,8 +10,11 @@
 
     <div class="container">
         <div class="row my-5">
-
-            <x-comic-form />
+                
+            <x-comic-form 
+                :categories="$categories" 
+                :formats="$formats"
+            />
 
         </div>
     </div>

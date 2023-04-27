@@ -33,3 +33,5 @@ Route::delete('/comic/delete/{comic}', [ComicController::class, 'delete'])->name
 
 
 Route::get('/profile', [PublicController::class, 'profile'])->name('profile');
+
+Route::get('/comic/format/{format}', [ComicController::class, 'filterByFormat'])->name('comic.format');

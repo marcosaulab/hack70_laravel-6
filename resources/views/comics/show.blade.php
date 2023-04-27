@@ -28,8 +28,13 @@
                     <span class="lead">Year: {!! $comic->release_year !!}</span>
                     <span class="lead">Price: {!! $comic->price !!}</span>
                 </p>
+                <h4 class="my-2 lead">Formati</h4>
+                <ul>
+                   @foreach ($formats as $format)
+                       <li>{{ $format->name }} </li>
+                   @endforeach
+                </ul>
             </div>
-
         </div>
     </div>
 

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id(); // ! crea un id auto_increment e chiave primaria
             $table->string('title');
             $table->string('img');
-            $table->string('genre');
             $table->string('editor');
             $table->text('abstract');
             $table->integer('release_year');

@@ -25,15 +25,16 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Dropdown
+                        Formati
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        @foreach ($formati as $formato)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('comic.format', $formato) }}">
+                                    {{ $formato->name }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>
@@ -41,7 +42,7 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
             @if(Auth::user() != null)
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white">{{ Auth::user()->name }}</a>
+                        <span class="nav-link text-white fw-bold">{{ Auth::user()->name }}</span>
                     </li>
                     <li class="nav-item ">
                         <a href="{{ route('profile') }}" class="nav-link text-white">I miei comics</a>
@@ -49,7 +50,7 @@
                     <li class="nav-item">
                        <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-info">Logout</button>
+                            <button type="submit" class="btn btn-info text-white"><i class="fa-solid fa-right-from-bracket"></i></button>
                        </form>
                     </li>
             @else

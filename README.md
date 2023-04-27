@@ -89,10 +89,72 @@ Con php artisan route:list posso verificare e vedere tutte le rotte della mia ap
  Relazione 1 a N
 
  1. tabella users (ce l'abbiamo già)
- 2. tabella comics (esiste? Se la devo creare fare la migration)
+ 2. tabella comics (esiste? Se no la devo creare con la migration)
  3. fare la migration per aggiungere la foreign key user_id nella tabella comics
  4. crare le funzioni di relazione all'interno dei modelli User e Comic
- 5. aggiungere nei fillable del modello Comic il campo user_id (ovvero il campo al quale mi riferico per collegare il comic la FK)
+ 5. aggiungere nei fillable del modello Comic il campo user_id (ovvero il campo al quale mi riferico per collegare il comic, la FK)
  6. aggiungere il campo user_id nel mass assignment (Comic::create([...])) un nuovo elemento chiave valore:
 
  'user_id' => Auth::user()->id 
+
+
+ 1 Category - Comic N
+
+ - Un Comic può avere associata 1 sola Categoria: quando creo un comic posso associare una sola categoria
+
+ - Una Categoria può essere associata a più Comic: la stessa categoria (ad esempio "Azione") può essere 
+   associata a più Comics
+
+1. Creare migration, model e controller: php artisan make:model Category -mcr (la r crea il controller con tutti i metodi 
+   già preimpostati: index, show, create, store, update, edit, delete)
+
+2. Definire i campi nella migration della tabella categories, $fillable nel model Category
+
+3. Abbiamo creato un Seeder per le categorie nel file DatabaseSeeder.php: vogliamo che quando eseguo un
+   fresh del database abbia la possibilità anche di compilare alcune tabelle (users e categories) con alcuni
+   dati preimpostati: php artisan migrate:fresh --seed
+
+4. Creare la migration per aggiungere il campo category_id alla tabella comics usando la convenzione di Laravel:
+   php artisan make:migration add_category_id_column_to_comics_table 
+
+5. Dobbiamo aggiungere nei fillable di Comic -> category_id
+
+6. Istruire i models con le funzioni di relazione
+
+7. Creiamo una select/option nel form di create del Comic
+
+8. Passiamo i dati del nuovo campo category_id al controller nel metodo store (la rotta che scatta quando 
+   clicchiamo sul pulsante di submit) e inserisco il nuovo campo category_id all'interno della Comic::create([...])
+
+9. All'interno della card uso la funzione di relazione per richiamare la categoria appartenente a quel comic: 
+   $comic->category->name
+
+
+# Relazioni Many To Many N a N
+
+- Per collegare N record di una tabella con N record di un’altra tabella crea una tabella intermedia: la   cosidetta TABELLA PIVOT
+
+- Con un inserimento all’interno della tabella pivot (tabella intermedia) io sancisco l’esistenza di una relazione tra le tabelle coinvolte
+
+- N:B: per creare una relazione N a N tra 2 tabelle devo inserire una o più righe all'interno della tabella pivot
+
+
+## Come si realizza una relazione N a N in Laravel
+
+comics / formats ('paper', 'eBook', 'audioBook')
+
+1. Assicurarsi di avere entrambe le tabelle coinvolte (comics / formats)
+
+2. Se non ho una o entrambe le tabelle cosa devo fare? Creare il modello, la migration e il controller php artisan make:model Format -mcr
+
+3. Creare la tabella intermedia (tabella pivot) (creare la migration per la tabella) con le fk di entrambi i model (usando le convenzioni di Laravel):
+    - parola chiave create
+    - nomi delle tabelle coinvolte con i nomi al singolare (riferimento ai model) in ordine alfabetico
+    - php artisan make:migration create_comic_format_table
+    - definire i campi all'interno della tabella pivot comic_format
+
+4. Inserire le funzioni di relazione all'interno dei model
+
+5. Permettere all'utente di associare N formats (formati) ad un comic quando creo un comic (nella vista)
+
+6. Associamo i comics ai formats selezionati (nel controller)

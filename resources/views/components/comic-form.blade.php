@@ -10,8 +10,21 @@
             <input type="text" class="form-control" name="editor">
         </div>
         <div class="mb-3 col-12 col-md-6">
-            <label for="genre" class="form-label">Genre</label>
-            <input type="text" class="form-control" name="genre">
+            <label for="category" class="form-label">Categoria</label>
+            <select name="category_id" class="form-control">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3 col-12 col-md-6">
+            <label for="formats" class="form-label">Formati</label>
+            <select name="formats[]" class="form-control" multiple>
+                @foreach ($formats as $format)
+                    <option value="{{ $format->id }}">{{ $format->name }}</option>              
+                @endforeach
+            </select>
+            <small class="text-warning fs-italic">Ctrl + click per selezionare più elementi</small>
         </div>
         <div class="mb-3 col-12 col-md-6">
             <label for="img" class="form-label">Img</label>

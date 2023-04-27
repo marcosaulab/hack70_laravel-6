@@ -11,9 +11,9 @@ class Comic extends Model
 
     protected $fillable = [
         'user_id',
+        'category_id',
         'title',
         'img',
-        'genre',
         'editor',
         'abstract',
         'release_year',
@@ -24,6 +24,17 @@ class Comic extends Model
     public function user() {
         // ! una riga sulla tabella comics ha un solo user_id
         return $this->belongsTo(User::class);
+    }
+
+    // ! un comic quante categorie ha associate? 1
+    public function category() { // ! la chiamo con il nome al singolare del modello in cui sono in relazione (Category)
+        return $this->belongsTo(Category::class);
+    }
+
+    // ! un comic con quanti formats può essere associato? N
+    public function formats() {
+        // a quanti comic può appartenere un formato?
+        return $this->belongsToMany(Format::class);
     }
 
 }
