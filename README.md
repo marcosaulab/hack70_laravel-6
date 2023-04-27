@@ -54,7 +54,7 @@ user_id (nome del model al singolare)
 comic_id
 
 
-## Autenticazione
+# Autenticazione
 
 
 Laravel Fortify: seguire doc di Laravel
@@ -86,7 +86,7 @@ Con php artisan route:list posso verificare e vedere tutte le rotte della mia ap
 
  ----------
 
- Relazione 1 a N
+ # Relazione 1 a N
 
  1. tabella users (ce l'abbiamo già)
  2. tabella comics (esiste? Se no la devo creare con la migration)
